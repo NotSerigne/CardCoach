@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Assistant Blackjack</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="game-table">
+    <!-- Zone Croupier -->
+    <div class="dealer-section">
+      <h2>Croupier</h2>
+      <div class="card-circle-container dealer-circle">
+        <div class="center-avatar dealer-avatar">
+          <div class="avatar-image">🎩</div>
+          <div class="selected-card" id="dealer-selected">A</div>
+        </div>
+        <div class="card-circle" id="dealer-circle">
+          <div class="card-option" data-value="A" data-angle="0">A</div>
+          <div class="card-option" data-value="2" data-angle="15">2</div>
+          <div class="card-option" data-value="3" data-angle="30">3</div>
+          <div class="card-option" data-value="4" data-angle="45">4</div>
+          <div class="card-option" data-value="5" data-angle="60">5</div>
+          <div class="card-option" data-value="6" data-angle="75">6</div>
+          <div class="card-option" data-value="7" data-angle="90">7</div>
+          <div class="card-option" data-value="8" data-angle="105">8</div>
+          <div class="card-option" data-value="9" data-angle="120">9</div>
+          <div class="card-option" data-value="10" data-angle="135">10</div>
+          <div class="card-option" data-value="J" data-angle="150">J</div>
+          <div class="card-option" data-value="Q" data-angle="165">Q</div>
+          <div class="card-option" data-value="K" data-angle="180">K</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Zone Centrale -->
+    <div class="center-section">
+      <div id="action-block" class="action-block">Sélectionnez les cartes et cliquez sur Vérifier</div>
+      <div class="controls">
+        <button id="check-btn" class="control-btn primary">Vérifier</button>
+        <button id="reset-btn" class="control-btn secondary">Réinitialiser</button>
+      </div>
+    </div>
+
+    <!-- Zone Joueur -->
+    <div class="player-section">
+      <h2>Joueur</h2>
+      <div id="player-value" class="player-value"></div>
+      <div class="selected-cards" id="player-hand-display"></div>
+      <div class="card-circle-container player-circle">
+        <div class="center-avatar player-avatar">
+          <div class="avatar-image">👤</div>
+        </div>
+        <div class="card-circle" id="player-circle">
+          <div class="card-option" data-value="A" data-angle="0">A</div>
+          <div class="card-option" data-value="2" data-angle="15">2</div>
+          <div class="card-option" data-value="3" data-angle="30">3</div>
+          <div class="card-option" data-value="4" data-angle="45">4</div>
+          <div class="card-option" data-value="5" data-angle="60">5</div>
+          <div class="card-option" data-value="6" data-angle="75">6</div>
+          <div class="card-option" data-value="7" data-angle="90">7</div>
+          <div class="card-option" data-value="8" data-angle="105">8</div>
+          <div class="card-option" data-value="9" data-angle="120">9</div>
+          <div class="card-option" data-value="10" data-angle="135">10</div>
+          <div class="card-option" data-value="J" data-angle="150">J</div>
+          <div class="card-option" data-value="Q" data-angle="165">Q</div>
+          <div class="card-option" data-value="K" data-angle="180">K</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="renderer.js"></script>
+</body>
+</html>

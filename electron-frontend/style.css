@@ -1,0 +1,379 @@
+body {
+  font-family: 'Arial', sans-serif;
+  background: radial-gradient(ellipse at center, #1a4d3a 0%, #0d2818 100%);
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.game-table {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 100vh;
+  padding: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Section Croupier */
+.dealer-section {
+  text-align: center;
+  margin-bottom: 10px;
+  overflow: visible;
+  z-index: 1;
+}
+
+.dealer-section h2 {
+  margin: 5px 0;
+  font-size: 20px;
+  color: #ffd700;
+  background: none;
+  position: relative;
+  z-index: 15;
+}
+
+/* Section Joueur */
+.player-section {
+  text-align: center;
+  margin-top: 10px;
+  overflow: visible;
+  z-index: 1;
+}
+
+.player-section h2 {
+  margin: 5px 0;
+  font-size: 20px;
+  color: #ffd700;
+  background: none;
+  position: relative;
+  z-index: 15;
+}
+
+.player-value {
+  font-size: 16px;
+  margin: 5px 0;
+  color: #ffd700;
+  font-weight: bold;
+  position: relative;
+  z-index: 15;
+}
+
+.selected-cards {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 10px 0;
+  min-height: 40px;
+  align-items: center;
+  position: relative;
+  z-index: 15;
+}
+
+.selected-card-item {
+  background: #fff;
+  color: #1a4d3a;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  border: 2px solid #ffd700;
+}
+
+/* Conteneur des cercles de cartes */
+.card-circle-container {
+  position: relative;
+  width: 100vw;
+  height: 220px;
+  margin: 0;
+  overflow: hidden;
+}
+
+/* Avatar central */
+.center-avatar {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  text-align: center;
+}
+
+.avatar-image {
+  font-size: 40px;
+  margin-bottom: 6px;
+  background: #fff;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  border: 3px solid #ffd700;
+}
+
+.selected-card {
+  background: #ffd700;
+  color: #1a4d3a;
+  border-radius: 4px;
+  padding: 3px 6px;
+  font-size: 11px;
+  font-weight: bold;
+  margin-top: 2px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+/* Cercle de cartes */
+.card-circle {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.3s ease;
+  cursor: grab;
+}
+
+.card-circle:active {
+  cursor: grabbing;
+}
+
+/* Options de cartes */
+.card-option {
+  position: absolute;
+  background: #fff;
+  color: #1a4d3a;
+  border: 2px solid transparent;
+  border-radius: 6px;
+  padding: 6px 8px;
+  font-size: 13px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  transform-origin: center;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.card-option:hover {
+  background: #ffd700;
+  border-color: #fff;
+  transform: scale(1.1);
+  z-index: 5;
+}
+
+.card-option.selected {
+  background: #ffd700;
+  border-color: #1a4d3a;
+  border-width: 3px;
+  transform: scale(1.15);
+}
+
+.card-option.visible {
+  opacity: 1;
+}
+
+.card-option.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Section centrale */
+.center-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  z-index: 1;
+  max-height: 200px;
+}
+
+.action-block {
+  background: #fff;
+  color: #1a4d3a;
+  border-radius: 12px;
+  padding: 15px 25px;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  min-width: 250px;
+  max-width: 400px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+  border: 3px solid #ffd700;
+  transition: all 0.3s ease;
+}
+
+.action-block.result {
+  background: #ffd700;
+  color: #1a4d3a;
+  animation: pulse 0.6s ease-out;
+}
+
+.action-block.error {
+  background: #e74c3c;
+  color: #fff;
+  border-color: #c0392b;
+  animation: shake 0.5s ease-out;
+}
+
+.action-block.warning {
+  background: #f39c12;
+  color: #fff;
+  border-color: #e67e22;
+}
+
+.action-block.waiting {
+  background: #3498db;
+  color: #fff;
+  border-color: #2980b9;
+  animation: loading 1s ease-in-out infinite;
+}
+
+.action-block.info {
+  background: #2ecc71;
+  color: #fff;
+  border-color: #27ae60;
+}
+
+/* Contrôles */
+.controls {
+  display: flex;
+  gap: 12px;
+}
+
+.control-btn {
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.control-btn.primary {
+  background: #ffd700;
+  color: #1a4d3a;
+}
+
+.control-btn.primary:hover {
+  background: #ffed4e;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+
+.control-btn.secondary {
+  background: #7f8c8d;
+  color: #fff;
+}
+
+.control-btn.secondary:hover {
+  background: #95a5a6;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+
+/* Sélecteur de carte après "Tirer" */
+.card-picker {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  padding: 15px;
+  margin-top: 15px;
+  text-align: center;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+  border: 2px solid #ffd700;
+}
+
+.card-picker span {
+  color: #1a4d3a;
+  font-weight: bold;
+  font-size: 14px;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.card-picker .card-btn {
+  background: #1a4d3a;
+  color: #fff;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  padding: 6px 10px;
+  margin: 3px;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.card-picker .card-btn:hover {
+  background: #ffd700;
+  color: #1a4d3a;
+  border-color: #1a4d3a;
+  transform: scale(1.05);
+}
+
+/* Ajustements bord écran et centrage sur avatar */
+.dealer-section .card-circle-container { margin-top: -40px; }
+.player-section .card-circle-container { margin-bottom: -40px; }
+
+.dealer-section h2, .player-section h2 { pointer-events: none; }
+
+.dealer-circle .center-avatar {
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+.player-circle .center-avatar {
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -100%);
+}
+
+/* Animations */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+@keyframes loading {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .card-circle-container {
+    width: 400px;
+    height: 200px;
+  }
+
+  .avatar-image {
+    width: 50px;
+    height: 50px;
+    font-size: 30px;
+  }
+
+  .card-option {
+    width: 35px;
+    height: 35px;
+    font-size: 12px;
+    padding: 6px 8px;
+  }
+}
